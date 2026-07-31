@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if ! command -v apt >/dev/null 2>&1; then
+    echo "apt was not found; skipping Debian/Ubuntu package installation."
+    exit 0
+fi
+
+echo "Detected Debian/Ubuntu-based system"
+
 # Basic Packages
 apt install -y \
     bc \
