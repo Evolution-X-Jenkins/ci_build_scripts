@@ -28,5 +28,3 @@ for source_dir in "$SOURCE_PATH"/*; do
         rm -rf "$source_dir"
     else
         echo "No match found for $base_name. Keeping $source_dir."
-    fi
-done
