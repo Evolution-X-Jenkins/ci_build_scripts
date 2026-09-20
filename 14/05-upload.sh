@@ -18,7 +18,7 @@ fi
 
 # Upload main rom
 echo "Uploading main rom..."
-rclone copy out/target/product/$device/EvolutionX*.zip b2:evo-downloads/$device/$folder/ -P
+rclone copy out/target/product/$device/EvolutionX*.zip b2:evo-downloads/$device/$version/$folder/ -P
 echo " "
 
 # Identify and upload initial install images
@@ -30,6 +30,6 @@ initial_images=$(jq -r '.response[0].initial_installation_images[]' "$json")
 # Upload found images
 for image in $initial_images; do
     echo "Uploading $image..."
-    rclone copy out/target/product/$device/$image*.img b2:evo-downloads/$device/$folder/$image/ -P
+    rclone copy out/target/product/$device/$image*.img b2:evo-downloads/$device/$version/$folder/$image/ -P
     echo " "
 done

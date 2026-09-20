@@ -50,14 +50,14 @@ echo "Android Version: $version -> Branch: $branch"
 
 # Upload main rom
 echo "Uploading main rom..."
-rclone copy out/target/product/$device/$filename b2:evo-downloads/$device/$folder/ -P
+rclone copy out/target/product/$device/$filename b2:evo-downloads/$device/$version/$folder/ -P
 echo "  ✓ Main ROM uploaded"
 echo " "
 
 # Upload JSON
 echo "Uploading OTA JSON..."
 cp out/target/product/$device/$device.json out/target/product/$device/$folder.json
-rclone copy out/target/product/$device/$folder.json b2:evo-downloads/$device/ -P
+rclone copy out/target/product/$device/$folder.json b2:evo-downloads/$device/$version/ -P
 echo "  ✓ OTA JSON uploaded"
 echo " "
 
@@ -88,7 +88,7 @@ fi
 # Upload found images
 for image in $initial_images; do
     echo "Uploading $image..."
-    rclone copy out/target/product/$device/$image.img b2:evo-downloads/$device/$folder/$image/ -P
+    rclone copy out/target/product/$device/$image.img b2:evo-downloads/$device/$version/$folder/$image/ -P
     echo "  ✓ $image uploaded"
     echo " "
 done
